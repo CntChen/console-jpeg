@@ -1,0 +1,34 @@
+{
+  "name": "console-jpeg",
+  "version": "0.0.1",
+  "description": "Print JPEG images to terminal output",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index.js",
+    "compile": "babel src/ -d dist/",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CntChen/console-jpeg.git"
+  },
+  "keywords": [
+    "node",
+    "colors",
+    "jpeg"
+  ],
+  "author": "CntChen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CntChen/console-jpeg/issues"
+  },
+  "homepage": "https://github.com/CntChen/console-jpeg#readme",
+  "dependencies": {
+    "ansi-256-colors": "^1.1.0",
+    "babel-cli": "^6.14.0",
+    "jpeg-js": "^0.2.0"
+  }
+}
