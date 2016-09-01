@@ -45,12 +45,10 @@ function attachTo(_console) {
 
   _console.jpeg = (jpegImage) => {
     const colorStr = jpegStringify(jpegImage);
-    _console.log(colorStr);
   };
 }
 
 function jpegStringify(jpegImage) {
-  console.log(typeof jpegImage);
   if (!(jpegImage instanceof Buffer)) {
     throw new Error('parameter shuold be Buffer');
   }
