@@ -34,6 +34,7 @@ function getcolorStr(rgbaBuffer, width, height) {
 
   var colorStr = '';
   for (var y = 0; y < height - 1; y = y + 2) {
+    if (colorStr) colorStr += _ansi256Colors2.default.reset + '\n';
     for (var x = 0; x < width; x++) {
       var color_r_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 0) * 5 / 255);
       var color_g_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 1) * 5 / 255);
@@ -47,7 +48,6 @@ function getcolorStr(rgbaBuffer, width, height) {
 
       colorStr += _ansi256Colors2.default.bg.getRgb(color_r_1, color_g_1, color_b_1) + _ansi256Colors2.default.fg.getRgb(color_r_2, color_g_2, color_b_2) + CHAR_HALF_BLOCK;
     }
-    colorStr += '\n';
   }
   colorStr += _ansi256Colors2.default.reset;
 
@@ -61,12 +61,10 @@ function attachTo(_console) {
 
   _console.jpeg = function (jpegImage) {
     var colorStr = jpegStringify(jpegImage);
-    _console.log(colorStr);
   };
 }
 
 function jpegStringify(jpegImage) {
-  console.log(typeof jpegImage === 'undefined' ? 'undefined' : _typeof(jpegImage));
   if (!(jpegImage instanceof Buffer)) {
     throw new Error('parameter shuold be Buffer');
   }

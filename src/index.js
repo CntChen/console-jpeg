@@ -17,6 +17,7 @@ function getcolorStr(rgbaBuffer, width, height) {
 
   let colorStr = '';
   for (let y = 0; y < height - 1; y = y + 2) {
+    if (colorStr) colorStr += colors.reset + '\n';
     for (let x = 0; x < width; x++) {
       let color_r_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 0) * 5 / 255);
       let color_g_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 1) * 5 / 255);
@@ -31,7 +32,6 @@ function getcolorStr(rgbaBuffer, width, height) {
       colorStr += colors.bg.getRgb(color_r_1, color_g_1, color_b_1)
                   + colors.fg.getRgb(color_r_2, color_g_2, color_b_2) + CHAR_HALF_BLOCK;
     }
-    colorStr += '\n';
   }
   colorStr += colors.reset;
 
