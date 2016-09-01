@@ -9,13 +9,13 @@ consoleJpeg.attachTo(console);
 console.jpeg(image);
 ```
 
-* jpegStringif
+* jpegStringiy
 ```
 var image = require('fs').readFileSync(__dirname + '/nodejs-green.jpeg');
 console.log(consoleJpeg.jpegStringify(image));
 ```
 
-## Thanks 
+## Thanks
 * inspired by [console-png][console-png]
 * pure javascript jepg decode by [jpeg-js][jpeg-js]
 * colorful console use [ansi-256-colors][ansi-256-colors]

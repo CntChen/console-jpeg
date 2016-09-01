@@ -58,3 +58,8 @@ export {
   jpegStringify,
   attachTo,
 }
+
+export default {
+  jpegStringify,
+  attachTo,
+}

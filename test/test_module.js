@@ -1,4 +1,4 @@
-var consoleJpeg  = require('../dist/index.js');
+import consoleJpeg from '../dist/index.js';
 
 var image = require('fs').readFileSync(__dirname + '/nodejs-green.jpeg');
 
