@@ -44,7 +44,7 @@ function attachTo(_console) {
   }
 
   _console.jpeg = (jpegImage) => {
-    const colorStr = jpegStringify(jpegImage);
+    console.log(jpegStringify(jpegImage));
   };
 }
 
