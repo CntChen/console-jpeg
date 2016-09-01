@@ -29,15 +29,23 @@ function getcolorStr(rgbaBuffer, width, height) {
     throw new Error('image buffer length is not correct');
   }
 
-  var colorStr = '';
-  for (var y = 0; y < height; y++) {
-    for (var x = 0; x < width; x++) {
-      var color_r = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 0) * 5 / 255);
-      var color_g = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 1) * 5 / 255);
-      var color_b = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 2) * 5 / 255);
-      var color_a = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 3) * 5 / 255);
+  // https://github.com/aantthony/console-png/blob/master/index.js
+  var CHAR_HALF_BLOCK = String.fromCharCode(9604);
 
-      colorStr += _ansi256Colors2.default.fg.getRgb(color_r, color_g, color_b) + _ansi256Colors2.default.bg.getRgb(color_r, color_g, color_b) + ' ';
+  var colorStr = '';
+  for (var y = 0; y < height - 1; y = y + 2) {
+    for (var x = 0; x < width; x++) {
+      var color_r_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 0) * 5 / 255);
+      var color_g_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 1) * 5 / 255);
+      var color_b_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 2) * 5 / 255);
+      var color_a_1 = Math.round(rgbaBuffer.readUInt8(4 * y * width + 4 * x + 3) * 5 / 255);
+
+      var color_r_2 = Math.round(rgbaBuffer.readUInt8(4 * (y + 1) * width + 4 * x + 0) * 5 / 255);
+      var color_g_2 = Math.round(rgbaBuffer.readUInt8(4 * (y + 1) * width + 4 * x + 1) * 5 / 255);
+      var color_b_2 = Math.round(rgbaBuffer.readUInt8(4 * (y + 1) * width + 4 * x + 2) * 5 / 255);
+      var color_a_2 = Math.round(rgbaBuffer.readUInt8(4 * (y + 1) * width + 4 * x + 3) * 5 / 255);
+
+      colorStr += _ansi256Colors2.default.bg.getRgb(color_r_1, color_g_1, color_b_1) + _ansi256Colors2.default.fg.getRgb(color_r_2, color_g_2, color_b_2) + CHAR_HALF_BLOCK;
     }
     colorStr += '\n';
   }
