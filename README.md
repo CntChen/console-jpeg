@@ -2,7 +2,7 @@
 Print JPEG images to terminal output
 
 ## demo
-![demo result](https://github.com/CntChen/console-jpeg/blob/master/doc/test_result.jpeg)
+![demo result](https://raw.githubusercontent.com/CntChen/console-jpeg/master/doc/test_result.jpeg)
 
 ## Usage
 * install
@@ -12,7 +12,7 @@ npm install console-jpeg
 
 * import
 ```
-var consoleJpeg = require('console-jpeg'); 
+var consoleJpeg = require('console-jpeg');
 ```
 
 * attach to console
