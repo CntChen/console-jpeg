@@ -1,6 +1,6 @@
 {
   "name": "console-jpeg",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Print JPEG images to terminal output",
   "main": "dist/index.js",
   "directories": {
